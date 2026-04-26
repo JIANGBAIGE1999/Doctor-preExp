@@ -1,0 +1,119 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a23cd77ef9c9a4fa48e31bfbbab1d3, type: 3}
+  m_Name: TrialSequence_72_BlockVersion
+  m_EditorClassIdentifier: 
+  trials:
+  - trialId: T000
+    blockId: 0
+    trialType: 0
+    targetDistanceMeters: 2
+    customInstruction:
+      japanese: 
+      english: 
+    flashMode: 2
+    panelCount: 1
+    flashTriggerDistance: 1.5
+    flashDuration: 0.3
+    panelSideMode: 1
+    panelSpawnMinDistance: 3
+    panelSpawnMaxDistance: 6
+    minPanelGap: 0.8
+    reservedGapFromStop: 0.5
+    lateralOffsetMagnitude: 0.9
+    flashPanelHeight: 1.5
+    panelScaleMultiplier: 1
+    repeatIndex: 0
+    useFixedRandomSeed: 0
+    randomSeed: 1000
+    generatedForwardDistances: []
+    generatedLateralOffsets: []
+    flashPanelForwardDistance: 3
+    flashPanelLateralOffset: 0
+  - trialId: T001
+    blockId: 0
+    trialType: 0
+    targetDistanceMeters: 2
+    customInstruction:
+      japanese: 
+      english: 
+    flashMode: 0
+    panelCount: 1
+    flashTriggerDistance: 1.5
+    flashDuration: 0.3
+    panelSideMode: 0
+    panelSpawnMinDistance: 3
+    panelSpawnMaxDistance: 6
+    minPanelGap: 0.8
+    reservedGapFromStop: 0.5
+    lateralOffsetMagnitude: 0.9
+    flashPanelHeight: 1.5
+    panelScaleMultiplier: 1
+    repeatIndex: 0
+    useFixedRandomSeed: 0
+    randomSeed: 1001
+    generatedForwardDistances: []
+    generatedLateralOffsets: []
+    flashPanelForwardDistance: 3
+    flashPanelLateralOffset: 0
+  - trialId: T002
+    blockId: 1
+    trialType: 1
+    targetDistanceMeters: 2
+    customInstruction:
+      japanese: 
+      english: 
+    flashMode: 2
+    panelCount: 1
+    flashTriggerDistance: 1.5
+    flashDuration: 0.3
+    panelSideMode: 0
+    panelSpawnMinDistance: 3
+    panelSpawnMaxDistance: 6
+    minPanelGap: 0.8
+    reservedGapFromStop: 0.5
+    lateralOffsetMagnitude: 0.9
+    flashPanelHeight: 1.5
+    panelScaleMultiplier: 1
+    repeatIndex: 0
+    useFixedRandomSeed: 0
+    randomSeed: 1002
+    generatedForwardDistances: []
+    generatedLateralOffsets: []
+    flashPanelForwardDistance: 3
+    flashPanelLateralOffset: 0
+  - trialId: T003
+    blockId: 1
+    trialType: 1
+    targetDistanceMeters: 2
+    customInstruction:
+      japanese: 
+      english: 
+    flashMode: 0
+    panelCount: 1
+    flashTriggerDistance: 1.5
+    flashDuration: 0.3
+    panelSideMode: 1
+    panelSpawnMinDistance: 3
+    panelSpawnMaxDistance: 6
+    minPanelGap: 0.8
+    reservedGapFromStop: 0.5
+    lateralOffsetMagnitude: 0.9
+    flashPanelHeight: 1.5
+    panelScaleMultiplier: 1
+    repeatIndex: 0
+    useFixedRandomSeed: 0
+    randomSeed: 1003
+    generatedForwardDistances: []
+    generatedLateralOffsets: []
+    flashPanelForwardDistance: 3
+    flashPanelLateralOffset: 0
