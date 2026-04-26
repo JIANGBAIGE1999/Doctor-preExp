@@ -25,7 +25,6 @@ public class ExperimentResultCsvExporter : MonoBehaviour
             ? Application.persistentDataPath
             : customDirectory;
 
-        // 如果目录不存在，就自动创建
         if (!Directory.Exists(directory))
         {
             Directory.CreateDirectory(directory);
@@ -37,7 +36,8 @@ public class ExperimentResultCsvExporter : MonoBehaviour
 
         sb.AppendLine(
             "trialId,blockId,trialType,targetDistanceMeters,actualDistanceMeters,subjectEstimateMeters," +
-            "flashMode,panelCount,flashTriggerDistance,generatedPanelForwardDistances,generatedPanelLateralOffsets," +
+            "flashMode,panelCount,flashTriggerDistance,panelSideMode,panelScaleMultiplier," +
+            "generatedPanelForwardDistances,generatedPanelLateralOffsets," +
             "startFeetX,startFeetY,startFeetZ,finishFeetX,finishFeetY,finishFeetZ,finishHeadX,finishHeadY,finishHeadZ," +
             "corridorForwardX,corridorForwardY,corridorForwardZ"
         );
@@ -57,6 +57,8 @@ public class ExperimentResultCsvExporter : MonoBehaviour
                 $"{r.flashMode}," +
                 $"{r.panelCount}," +
                 $"{r.flashTriggerDistance}," +
+                $"{r.panelSideMode}," +
+                $"{r.panelScaleMultiplier}," +
                 $"{Escape(panelForwards)}," +
                 $"{Escape(panelLaterals)}," +
                 $"{r.startFeetWorldPosition.x},{r.startFeetWorldPosition.y},{r.startFeetWorldPosition.z}," +

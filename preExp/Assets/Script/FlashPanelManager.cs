@@ -4,7 +4,7 @@ using UnityEngine;
 public class FlashPanelManager : MonoBehaviour
 {
     [Header("Panel Pool")]
-    public ProximityFlashPanel[] panelPool;   // 至少准备 3 个
+    public ProximityFlashPanel[] panelPool;
 
     [Header("References")]
     public Transform corridorRoot;
@@ -14,20 +14,6 @@ public class FlashPanelManager : MonoBehaviour
     [Header("Debug")]
     public bool logGeneratedLayout = true;
 
-    private float GetLateralOffsetForPanel(TrialDefinition trial)
-    {
-        switch (trial.panelSideMode)
-        {
-            case PanelSideMode.AllLeft:
-                return -trial.lateralOffsetMagnitude;
-
-            case PanelSideMode.AllRight:
-                return trial.lateralOffsetMagnitude;
-
-            default:
-                return -trial.lateralOffsetMagnitude;
-        }
-    }
     public void ConfigureForTrial(
         Transform newCorridorRoot,
         Transform newFlashPanelOrigin,
@@ -71,6 +57,7 @@ public class FlashPanelManager : MonoBehaviour
 
             float d = Random.Range(trial.panelSpawnMinDistance, trial.panelSpawnMaxDistance);
 
+            // 避开 stopDistance
             if (Mathf.Abs(d - trial.targetDistanceMeters) < trial.reservedGapFromStop)
                 continue;
 
@@ -87,7 +74,7 @@ public class FlashPanelManager : MonoBehaviour
             if (!valid)
                 continue;
 
-            float lateral = GetLateralOffsetForPanel(trial);
+            float lateral = GetLateralOffsetForTrial(trial);
 
             forwardDistances.Add(d);
             lateralOffsets.Add(lateral);
@@ -133,9 +120,25 @@ public class FlashPanelManager : MonoBehaviour
             {
                 Debug.Log(
                     $"[FlashPanelManager] Trial={trial.trialId}, Panel#{i}, " +
-                    $"forwardDistance={forwardDistances[i]:0.00}, lateralOffset={lateralOffsets[i]:0.00}"
+                    $"forwardDistance={forwardDistances[i]:0.00}, lateralOffset={lateralOffsets[i]:0.00}, " +
+                    $"side={trial.panelSideMode}, scale={trial.panelScaleMultiplier:0.00}"
                 );
             }
+        }
+    }
+
+    private float GetLateralOffsetForTrial(TrialDefinition trial)
+    {
+        switch (trial.panelSideMode)
+        {
+            case PanelSideMode.AllLeft:
+                return -trial.lateralOffsetMagnitude;
+
+            case PanelSideMode.AllRight:
+                return trial.lateralOffsetMagnitude;
+
+            default:
+                return -trial.lateralOffsetMagnitude;
         }
     }
 

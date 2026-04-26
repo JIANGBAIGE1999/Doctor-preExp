@@ -26,6 +26,14 @@ public class GuidanceUIController : MonoBehaviour
     public Button submitButton;
     public TMP_Text submitButtonText;
 
+    [Header("Confirm Dialog UI")]
+    public GameObject confirmPanel;
+    public TMPro.TextMeshProUGUI confirmMessageText;
+    public UnityEngine.UI.Button confirmButton;
+    public TMPro.TextMeshProUGUI confirmButtonText;
+
+    private Action onConfirmDialogSubmitted;
+
     private Action<float> onQuestionSubmitted;
 
     private void Awake()
@@ -36,6 +44,14 @@ public class GuidanceUIController : MonoBehaviour
         WireUi();
         AttachCanvasToHead();
         HideAll();
+
+        if (confirmButton != null)
+        {
+            confirmButton.onClick.RemoveListener(OnConfirmDialogClicked);
+            confirmButton.onClick.AddListener(OnConfirmDialogClicked);
+        }
+
+        HideConfirmDialog();
     }
 
     private void LateUpdate()
@@ -94,7 +110,7 @@ public class GuidanceUIController : MonoBehaviour
 
     public void ShowInstruction(string message)
     {
-        //Debug.Log($"[GuidanceUI] ShowInstruction called. message = {message}");
+        Debug.Log($"[GuidanceUI] ShowInstruction called. message = {message}");
 
         if (instructionText != null)
             instructionText.text = message;
@@ -178,5 +194,45 @@ public class GuidanceUIController : MonoBehaviour
     {
         if (questionPanel != null)
             questionPanel.SetActive(false);
+    }
+
+    public void ShowConfirmDialog(string message, string buttonLabel, Action onConfirm)
+    {
+        HideBoundaryWarning();
+        HideQuestionPanel();
+        HideInstruction();
+
+        onConfirmDialogSubmitted = onConfirm;
+
+        if (confirmMessageText != null)
+            confirmMessageText.text = message;
+
+        if (confirmButtonText != null)
+        {
+            confirmButtonText.text = buttonLabel;
+            confirmButtonText.enableAutoSizing = true;
+            confirmButtonText.fontSizeMin = 18;
+            confirmButtonText.fontSizeMax = 36;
+            confirmButtonText.enableWordWrapping = false;
+            confirmButtonText.overflowMode = TMPro.TextOverflowModes.Ellipsis;
+        }
+
+        if (confirmPanel != null)
+            confirmPanel.SetActive(true);
+    }
+
+    public void HideConfirmDialog()
+    {
+        if (confirmPanel != null)
+            confirmPanel.SetActive(false);
+
+        onConfirmDialogSubmitted = null;
+    }
+
+    private void OnConfirmDialogClicked()
+    {
+        Action callback = onConfirmDialogSubmitted;
+        HideConfirmDialog();
+        callback?.Invoke();
     }
 }

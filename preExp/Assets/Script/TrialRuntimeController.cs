@@ -11,11 +11,13 @@ public class TrialResult
 
     public float targetDistanceMeters;
     public float actualDistanceMeters;
-    public float subjectEstimateMeters;   // Trial2 时为 -1
+    public float subjectEstimateMeters;
 
     public FlashMode flashMode;
     public int panelCount;
     public float flashTriggerDistance;
+    public PanelSideMode panelSideMode;
+    public float panelScaleMultiplier;
 
     public float[] generatedPanelForwardDistances;
     public float[] generatedPanelLateralOffsets;
@@ -88,14 +90,8 @@ public class TrialRuntimeController : MonoBehaviour
     public event Action<TrialResult> TrialCompleted;
 
     private TrialDefinition currentTrial;
-
-    // 当前 Trial 的起点：脚下地面位置
     private Vector3 currentStartFeetWorldPosition;
-
-    // 当前 Trial 的走廊朝向（世界坐标，水平面）
     private Vector3 currentCorridorForwardWorld;
-
-    // 当前生效的走廊 rig
     private CorridorRig currentCorridorRig;
 
     private bool isTrialActive;
@@ -104,7 +100,6 @@ public class TrialRuntimeController : MonoBehaviour
     private InputDevice finishButtonDevice;
     private bool lastFinishButtonState;
 
-    // Trial1 冻结数据
     private Vector3 frozenFinishFeetWorldPosition;
     private Vector3 frozenFinishHeadWorldPosition;
     private float frozenActualDistanceMeters;
@@ -180,17 +175,8 @@ public class TrialRuntimeController : MonoBehaviour
 
         ui.HideBoundaryWarning();
         ui.HideQuestionPanel();
-
-        //Debug.Log($"[TrialRuntimeController] BeginTrial called. trialId={trial.trialId}, type={trial.trialType}, target={trial.targetDistanceMeters}");
-        //Debug.Log($"[TrialRuntimeController] ShowInstruction text = {currentTrial.GetInstructionText()}");
-
         ui.ShowInstruction(currentTrial.GetInstructionText());
 
-        //Debug.Log($"[TrialRuntimeController] BeginTrial called. trialId={trial.trialId}, type={trial.trialType}, target={trial.targetDistanceMeters}");
-        //Debug.Log($"[TrialRuntimeController] ShowInstruction text = {currentTrial.GetInstructionText()}");
-
-        // 这里是唯一与旧版相比的关键改动：
-        // 原来是单个 flashPanel，现在改成 FlashPanelManager 统一管理 1/2/3 个面板
         if (flashPanelManager != null)
         {
             if (currentCorridorRig == null)
@@ -232,14 +218,16 @@ public class TrialRuntimeController : MonoBehaviour
             ui.HideInstruction();
             ui.HideBoundaryWarning();
 
-
+            string submitLabel = !string.IsNullOrWhiteSpace(nextTrialButtonText.japanese)
+                ? nextTrialButtonText.japanese
+                : nextTrialButtonText.Build();
 
             ui.ShowQuestion(
                 trial1QuestionPrompt.Build(),
                 questionMinMeters,
                 questionMaxMeters,
                 Mathf.Clamp(questionInitialMeters, questionMinMeters, questionMaxMeters),
-                nextTrialButtonText.japanese,
+                submitLabel,
                 OnTrial1AnswerSubmitted
             );
         }
@@ -284,13 +272,14 @@ public class TrialRuntimeController : MonoBehaviour
             trialType = currentTrial != null ? currentTrial.trialType : TrialType.Trial1,
 
             targetDistanceMeters = currentTrial != null ? currentTrial.targetDistanceMeters : 0f,
-
             actualDistanceMeters = actualDistanceMeters,
             subjectEstimateMeters = estimateMeters,
 
             flashMode = currentTrial != null ? currentTrial.flashMode : FlashMode.Off,
             panelCount = currentTrial != null ? currentTrial.panelCount : 0,
             flashTriggerDistance = currentTrial != null ? currentTrial.flashTriggerDistance : 0f,
+            panelSideMode = currentTrial != null ? currentTrial.panelSideMode : PanelSideMode.AllLeft,
+            panelScaleMultiplier = currentTrial != null ? currentTrial.panelScaleMultiplier : 1f,
 
             generatedPanelForwardDistances = currentTrial != null ? currentTrial.GetGeneratedForwardDistances() : null,
             generatedPanelLateralOffsets = currentTrial != null ? currentTrial.GetGeneratedLateralOffsets() : null,

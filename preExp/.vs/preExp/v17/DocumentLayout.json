@@ -3,36 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7815FC6D-D8BA-2165-10F5-6D696DBACD1D}|Assembly-CSharp.csproj|c:\\users\\pinqi\\onedrive\\desktop\\preexp\\assets\\script\\experimentresultcsvexporter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7815FC6D-D8BA-2165-10F5-6D696DBACD1D}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\experimentresultcsvexporter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7815FC6D-D8BA-2165-10F5-6D696DBACD1D}|Assembly-CSharp.csproj|C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\assets\\script\\trialruntimecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7815FC6D-D8BA-2165-10F5-6D696DBACD1D}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\trialruntimecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7815FC6D-D8BA-2165-10F5-6D696DBACD1D}|Assembly-CSharp.csproj|C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\assets\\script\\proximityflashpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7815FC6D-D8BA-2165-10F5-6D696DBACD1D}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\proximityflashpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7815FC6D-D8BA-2165-10F5-6D696DBACD1D}|Assembly-CSharp.csproj|c:\\users\\pinqi\\onedrive\\desktop\\preexp\\assets\\script\\experimentflowmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7815FC6D-D8BA-2165-10F5-6D696DBACD1D}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\experimentflowmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7815FC6D-D8BA-2165-10F5-6D696DBACD1D}|Assembly-CSharp.csproj|C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\assets\\script\\guidanceuicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7815FC6D-D8BA-2165-10F5-6D696DBACD1D}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\guidanceuicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7815FC6D-D8BA-2165-10F5-6D696DBACD1D}|Assembly-CSharp.csproj|C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\assets\\script\\experimentflowmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7815FC6D-D8BA-2165-10F5-6D696DBACD1D}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\experimentflowmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7815FC6D-D8BA-2165-10F5-6D696DBACD1D}|Assembly-CSharp.csproj|c:\\users\\pinqi\\onedrive\\desktop\\preexp\\assets\\script\\proximityflashpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7815FC6D-D8BA-2165-10F5-6D696DBACD1D}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\proximityflashpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7815FC6D-D8BA-2165-10F5-6D696DBACD1D}|Assembly-CSharp.csproj|C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\assets\\script\\trialsequencegenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7815FC6D-D8BA-2165-10F5-6D696DBACD1D}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\trialsequencegenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7815FC6D-D8BA-2165-10F5-6D696DBACD1D}|Assembly-CSharp.csproj|C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\assets\\script\\flashpanelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7815FC6D-D8BA-2165-10F5-6D696DBACD1D}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\flashpanelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7815FC6D-D8BA-2165-10F5-6D696DBACD1D}|Assembly-CSharp.csproj|C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\assets\\script\\trialsequencegenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7815FC6D-D8BA-2165-10F5-6D696DBACD1D}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\trialsequencegenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7815FC6D-D8BA-2165-10F5-6D696DBACD1D}|Assembly-CSharp.csproj|C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\assets\\script\\experimentresultcsvexporter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7815FC6D-D8BA-2165-10F5-6D696DBACD1D}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\experimentresultcsvexporter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7815FC6D-D8BA-2165-10F5-6D696DBACD1D}|Assembly-CSharp.csproj|C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\assets\\script\\trialdefinition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7815FC6D-D8BA-2165-10F5-6D696DBACD1D}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\trialdefinition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7815FC6D-D8BA-2165-10F5-6D696DBACD1D}|Assembly-CSharp.csproj|C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\assets\\script\\trialsequenceasset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7815FC6D-D8BA-2165-10F5-6D696DBACD1D}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\trialsequenceasset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7815FC6D-D8BA-2165-10F5-6D696DBACD1D}|Assembly-CSharp.csproj|C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\assets\\script\\alignplayertostartpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -41,10 +41,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\Library\\PackageCache\\com.htc.upm.vive.openxr@25a5fd2124\\Runtime\\Features\\Tracker\\Wrist\\Scripts\\ViveWristTracker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Library\\PackageCache\\com.htc.upm.vive.openxr@25a5fd2124\\Runtime\\Features\\Tracker\\Wrist\\Scripts\\ViveWristTracker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7815FC6D-D8BA-2165-10F5-6D696DBACD1D}|Assembly-CSharp.csproj|C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\assets\\script\\trialsequenceasset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7815FC6D-D8BA-2165-10F5-6D696DBACD1D}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\trialsequenceasset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -54,46 +50,83 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ExperimentResultCsvExporter.cs",
-              "DocumentMoniker": "C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\Assets\\Script\\ExperimentResultCsvExporter.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\ExperimentResultCsvExporter.cs",
-              "ToolTip": "C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\Assets\\Script\\ExperimentResultCsvExporter.cs",
-              "RelativeToolTip": "Assets\\Script\\ExperimentResultCsvExporter.cs",
-              "ViewState": "AgIAADYAAAAAAAAAAADwv2UAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-21T08:24:55.32Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "GuidanceUIController.cs",
               "DocumentMoniker": "C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\Assets\\Script\\GuidanceUIController.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\GuidanceUIController.cs",
               "ToolTip": "C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\Assets\\Script\\GuidanceUIController.cs",
               "RelativeToolTip": "Assets\\Script\\GuidanceUIController.cs",
-              "ViewState": "AgIAAH0AAAAAAAAAAIA0wKAAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAN4AAAAAAAAAAAAAAFkAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-21T04:51:06.883Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "ExperimentFlowManager.cs",
               "DocumentMoniker": "C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\Assets\\Script\\ExperimentFlowManager.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\ExperimentFlowManager.cs",
               "ToolTip": "C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\Assets\\Script\\ExperimentFlowManager.cs",
               "RelativeToolTip": "Assets\\Script\\ExperimentFlowManager.cs",
-              "ViewState": "AgIAAJ0AAAAAAAAAAAAewL4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAKgBAAAAAAAAAAAAACsAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-21T03:01:46.474Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProximityFlashPanel.cs",
+              "DocumentMoniker": "C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\Assets\\Script\\ProximityFlashPanel.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\ProximityFlashPanel.cs",
+              "ToolTip": "C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\Assets\\Script\\ProximityFlashPanel.cs",
+              "RelativeToolTip": "Assets\\Script\\ProximityFlashPanel.cs",
+              "ViewState": "AgIAAMsAAAAAAAAAAAAAwOAAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-13T11:51:43.934Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TrialRuntimeController.cs",
+              "DocumentMoniker": "C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\Assets\\Script\\TrialRuntimeController.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\TrialRuntimeController.cs",
+              "ToolTip": "C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\Assets\\Script\\TrialRuntimeController.cs",
+              "RelativeToolTip": "Assets\\Script\\TrialRuntimeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAMgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-13T09:22:09.507Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TrialSequenceGenerator.cs",
+              "DocumentMoniker": "C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\Assets\\Script\\TrialSequenceGenerator.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\TrialSequenceGenerator.cs",
+              "ToolTip": "C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\Assets\\Script\\TrialSequenceGenerator.cs",
+              "RelativeToolTip": "Assets\\Script\\TrialSequenceGenerator.cs",
+              "ViewState": "AgIAACwBAAAAAAAAAAAIwEEBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-21T03:03:07.431Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "TrialSequenceAsset.cs",
+              "DocumentMoniker": "C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\Assets\\Script\\TrialSequenceAsset.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\TrialSequenceAsset.cs",
+              "ToolTip": "C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\Assets\\Script\\TrialSequenceAsset.cs",
+              "RelativeToolTip": "Assets\\Script\\TrialSequenceAsset.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-13T12:39:51.376Z"
             },
             {
               "$type": "Document",
@@ -110,65 +143,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "TrialSequenceAsset.cs",
-              "DocumentMoniker": "C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\Assets\\Script\\TrialSequenceAsset.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\TrialSequenceAsset.cs",
-              "ToolTip": "C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\Assets\\Script\\TrialSequenceAsset.cs",
-              "RelativeToolTip": "Assets\\Script\\TrialSequenceAsset.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T12:39:51.376Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "TrialDefinition.cs",
-              "DocumentMoniker": "C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\Assets\\Script\\TrialDefinition.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\TrialDefinition.cs",
-              "ToolTip": "C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\Assets\\Script\\TrialDefinition.cs",
-              "RelativeToolTip": "Assets\\Script\\TrialDefinition.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T12:39:19.427Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ProximityFlashPanel.cs",
-              "DocumentMoniker": "C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\Assets\\Script\\ProximityFlashPanel.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\ProximityFlashPanel.cs",
-              "ToolTip": "C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\Assets\\Script\\ProximityFlashPanel.cs",
-              "RelativeToolTip": "Assets\\Script\\ProximityFlashPanel.cs",
-              "ViewState": "AgIAAD8AAAAAAAAAAAAewFcAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T11:51:43.934Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "TrialRuntimeController.cs",
-              "DocumentMoniker": "C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\Assets\\Script\\TrialRuntimeController.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\TrialRuntimeController.cs",
-              "ToolTip": "C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\Assets\\Script\\TrialRuntimeController.cs",
-              "RelativeToolTip": "Assets\\Script\\TrialRuntimeController.cs",
-              "ViewState": "AgIAANkAAAAAAAAAAAAewPUAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T09:22:09.507Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "TrialSequenceGenerator.cs",
-              "DocumentMoniker": "C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\Assets\\Script\\TrialSequenceGenerator.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\TrialSequenceGenerator.cs",
-              "ToolTip": "C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\Assets\\Script\\TrialSequenceGenerator.cs",
-              "RelativeToolTip": "Assets\\Script\\TrialSequenceGenerator.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAewCkAAAAnAAAAAAAAAA==",
+              "Title": "ExperimentResultCsvExporter.cs",
+              "DocumentMoniker": "C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\Assets\\Script\\ExperimentResultCsvExporter.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\ExperimentResultCsvExporter.cs",
+              "ToolTip": "C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\Assets\\Script\\ExperimentResultCsvExporter.cs",
+              "RelativeToolTip": "Assets\\Script\\ExperimentResultCsvExporter.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAADwv08AAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-21T03:03:07.431Z"
+              "WhenOpened": "2026-04-21T08:24:55.32Z"
             },
             {
               "$type": "Document",
@@ -178,7 +161,7 @@
               "RelativeDocumentMoniker": "Assets\\Script\\FlashPanelManager.cs",
               "ToolTip": "C:\\Users\\pinqi\\OneDrive\\Desktop\\preExp\\Assets\\Script\\FlashPanelManager.cs",
               "RelativeToolTip": "Assets\\Script\\FlashPanelManager.cs",
-              "ViewState": "AgIAAEkAAAAAAAAAAAAewGEAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAewH4AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-20T11:30:28.734Z"
             },

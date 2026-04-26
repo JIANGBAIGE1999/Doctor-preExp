@@ -1,11 +1,6 @@
 ﻿using System;
 using UnityEngine;
 
-public enum PanelSideMode
-{
-    AllLeft,
-    AllRight
-}
 public enum FlashMode
 {
     Off,
@@ -13,33 +8,46 @@ public enum FlashMode
     Strong
 }
 
+public enum PanelSideMode
+{
+    AllLeft,
+    AllRight
+}
+
 [Serializable]
 public class TrialDefinition
 {
-    [Header("Panel Side")]
-    public PanelSideMode panelSideMode = PanelSideMode.AllLeft;
-
     [Header("Identity")]
     public string trialId = "T001";
 
     [Header("Block")]
-    public int blockId = 0;
+    public int blockId = 0; // 0 = Trial1 block, 1 = Trial2 block
 
     [Tooltip("Trial1 = 有问题UI / Trial2 = 无问题UI")]
     public TrialType trialType = TrialType.Trial1;
 
     [Header("Stop / UI")]
     [Min(0f)]
-    public float targetDistanceMeters = 5f;
+    public float targetDistanceMeters = 6f;
 
     public BilingualText customInstruction;
 
-    [Header("Flash Panel - Condition")]
+    [Header("Flash Panel - Core Factors")]
     public FlashMode flashMode = FlashMode.Off;
 
     [Min(1)]
-    public int panelCount = 1; // 1 / 2 / 3
+    public int panelCount = 1;
 
+    [Min(0f)]
+    public float flashTriggerDistance = 1.0f;
+
+    [Min(0f)]
+    public float flashDuration = 0.3f;
+
+    [Header("Balanced Random Variables")]
+    public PanelSideMode panelSideMode = PanelSideMode.AllLeft;
+
+    [Header("Panel Placement Settings")]
     [Min(0f)]
     public float panelSpawnMinDistance = 1.0f;
 
@@ -58,13 +66,12 @@ public class TrialDefinition
     [Min(0f)]
     public float flashPanelHeight = 1.5f;
 
-    [Min(0f)]
-    public float flashTriggerDistance = 1.0f;
+    [Header("Panel Scale")]
+    [Min(0.01f)]
+    public float panelScaleMultiplier = 1.0f;
 
-    [Min(0f)]
-    public float flashDuration = 0.3f;
-
-    [Header("Random")]
+    [Header("Repeat / Random")]
+    public int repeatIndex = 0;
     public bool useFixedRandomSeed = false;
     public int randomSeed = 12345;
 
@@ -122,15 +129,20 @@ public class TrialDefinition
 
             flashMode = this.flashMode,
             panelCount = 1,
+            flashTriggerDistance = this.flashTriggerDistance,
+            flashDuration = this.flashDuration,
+
+            panelSideMode = this.panelSideMode,
+
             panelSpawnMinDistance = this.panelSpawnMinDistance,
             panelSpawnMaxDistance = this.panelSpawnMaxDistance,
             minPanelGap = this.minPanelGap,
             reservedGapFromStop = this.reservedGapFromStop,
             lateralOffsetMagnitude = this.lateralOffsetMagnitude,
             flashPanelHeight = this.flashPanelHeight,
-            flashTriggerDistance = this.flashTriggerDistance,
-            flashDuration = this.flashDuration,
+            panelScaleMultiplier = this.panelScaleMultiplier,
 
+            repeatIndex = this.repeatIndex,
             useFixedRandomSeed = this.useFixedRandomSeed,
             randomSeed = this.randomSeed,
 
