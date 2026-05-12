@@ -89,16 +89,20 @@ public class TrialDefinition
         if (!string.IsNullOrWhiteSpace(custom))
             return custom;
 
-        // Trial1 = 有问题UI：不显示米数
+        // Trial1 = 有问题UI
         if (trialType == TrialType.Trial1)
         {
-            return "まっすぐ前に歩いてください。UIが表示されたら歩行を止めて、質問に答えてください。\n\n"
-                 + "Please walk straight ahead. When the UI appears, stop walking and answer the question.";
+            return
+                "まっすぐ前に歩いてください。UIが表示されたら歩行を止めて、質問に答えてください。\n" +
+                "左手のスティック押し込みで、廊下の向きを調整できます。\n\n" +
+                "Please walk straight ahead. When the UI appears, stop walking and answer the question.\n" +
+                "Press the left stick button to adjust the corridor direction.";
         }
 
-        // Trial2 = 无问题UI：显示当前 trial 的目标米数
-        return $"あなたが {targetDistanceMeters:0.0} m 歩いたと思った時点で歩行を止め、controller の A ボタンを押して課題を終了してください。\n\n"
-             + $"When you think you have walked {targetDistanceMeters:0.0} m, stop walking and press the controller A button to finish the trial.";
+        // Trial2 = 无问题UI
+        return
+            $"あなたが {targetDistanceMeters:0.0} m 歩いたと思った時点で歩行を止め、右手のスティック押し込みボタンを押して課題を終了してください。\n\n" +
+            $"When you think you have walked {targetDistanceMeters:0.0} m, stop walking and press the right stick button to finish the trial.";
     }
 
     public void SetGeneratedPanelLayout(float[] forwardDistances, float[] lateralOffsets)

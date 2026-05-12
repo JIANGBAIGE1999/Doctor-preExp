@@ -54,7 +54,8 @@ public enum FinishButtonType
 {
     PrimaryButton,
     SecondaryButton,
-    TriggerButton
+    TriggerButton,
+    StickClick
 }
 
 public class TrialRuntimeController : MonoBehaviour
@@ -450,6 +451,10 @@ public class TrialRuntimeController : MonoBehaviour
 
             case FinishButtonType.TriggerButton:
                 finishButtonDevice.TryGetFeatureValue(CommonUsages.triggerButton, out pressed);
+                break;
+
+            case FinishButtonType.StickClick:
+                finishButtonDevice.TryGetFeatureValue(CommonUsages.primary2DAxisClick, out pressed);
                 break;
         }
 

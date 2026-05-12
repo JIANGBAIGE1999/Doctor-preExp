@@ -1,49 +1,51 @@
-using System;
+﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class GuidanceUIController : MonoBehaviour
 {
     [Header("Head Anchor")]
-    public Transform head;
+    public Transform headAnchor;
     public RectTransform canvasRoot;
     public float uiDistance = 1.0f;
 
+    [Header("Canvas Pose Offset")]
+    [Tooltip("UI整体高度偏移。负数表示向下移动，建议从 -0.2 到 -0.35 开始测试。")]
+    public float uiVerticalOffset = -0.25f;
+
     [Header("Instruction UI")]
     public GameObject instructionPanel;
-    public TMP_Text instructionText;
+    public TextMeshProUGUI instructionText;
 
     [Header("Warning UI")]
     public GameObject warningPanel;
-    public TMP_Text warningText;
+    public TextMeshProUGUI warningText;
 
     [Header("Question UI")]
     public GameObject questionPanel;
-    public TMP_Text questionPromptText;
+    public TextMeshProUGUI questionPromptText;
     public Slider answerSlider;
-    public TMP_Text answerValueText;
+    public TextMeshProUGUI answerValueText;
     public Button submitButton;
-    public TMP_Text submitButtonText;
+    public TextMeshProUGUI submitButtonText;
 
     [Header("Confirm Dialog UI")]
     public GameObject confirmPanel;
-    public TMPro.TextMeshProUGUI confirmMessageText;
-    public UnityEngine.UI.Button confirmButton;
-    public TMPro.TextMeshProUGUI confirmButtonText;
-
-    private Action onConfirmDialogSubmitted;
+    public TextMeshProUGUI confirmMessageText;
+    public Button confirmButton;
+    public TextMeshProUGUI confirmButtonText;
 
     private Action<float> onQuestionSubmitted;
+    private Action onConfirmDialogSubmitted;
 
     private void Awake()
     {
-        if (head == null && Camera.main != null)
-            head = Camera.main.transform;
-
-        WireUi();
-        AttachCanvasToHead();
-        HideAll();
+        if (submitButton != null)
+        {
+            submitButton.onClick.RemoveListener(OnSubmitQuestionClicked);
+            submitButton.onClick.AddListener(OnSubmitQuestionClicked);
+        }
 
         if (confirmButton != null)
         {
@@ -51,81 +53,153 @@ public class GuidanceUIController : MonoBehaviour
             confirmButton.onClick.AddListener(OnConfirmDialogClicked);
         }
 
+        if (answerSlider != null)
+        {
+            answerSlider.onValueChanged.RemoveListener(OnAnswerSliderChanged);
+            answerSlider.onValueChanged.AddListener(OnAnswerSliderChanged);
+        }
+
+        ApplyDefaultTmpSettings();
+
+        HideInstruction();
+        HideBoundaryWarning();
+        HideQuestionPanel();
         HideConfirmDialog();
     }
 
     private void LateUpdate()
     {
-        AttachCanvasToHead();
+        UpdateCanvasPose();
     }
 
-    private void WireUi()
+    private void UpdateCanvasPose()
     {
-        if (answerSlider != null)
-        {
-            answerSlider.onValueChanged.RemoveListener(OnSliderValueChanged);
-            answerSlider.onValueChanged.AddListener(OnSliderValueChanged);
-        }
-
-        if (submitButton != null)
-        {
-            submitButton.onClick.RemoveListener(OnSubmitButtonClicked);
-            submitButton.onClick.AddListener(OnSubmitButtonClicked);
-        }
-    }
-
-    private void AttachCanvasToHead()
-    {
-        if (head == null || canvasRoot == null)
+        if (headAnchor == null || canvasRoot == null)
             return;
 
-        if (canvasRoot.parent != head)
-            canvasRoot.SetParent(head, false);
+        Vector3 forward = headAnchor.forward;
+        forward.y = 0f;
 
-        canvasRoot.localPosition = new Vector3(0f, 0f, uiDistance);
-        canvasRoot.localRotation = Quaternion.identity;
+        if (forward.sqrMagnitude < 0.0001f)
+            forward = Vector3.forward;
+
+        forward.Normalize();
+
+        Vector3 verticalOffset = Vector3.up * uiVerticalOffset;
+
+        canvasRoot.position = headAnchor.position + forward * uiDistance + verticalOffset;
+        canvasRoot.rotation = Quaternion.LookRotation(forward, Vector3.up);
     }
 
-    private void OnSliderValueChanged(float value)
+    private void ApplyDefaultTmpSettings()
     {
-        if (answerValueText != null)
-            answerValueText.text = $"{value:0.0} m";
+        ApplyBodyTextStyle(instructionText);
+        ApplyBodyTextStyle(warningText);
+        ApplyBodyTextStyle(questionPromptText);
+        ApplyBodyTextStyle(confirmMessageText);
+
+        ApplyButtonTextStyle(submitButtonText);
+        ApplyButtonTextStyle(confirmButtonText);
+
+        ApplyValueTextStyle(answerValueText);
     }
 
-    private void OnSubmitButtonClicked()
+    private void ApplyBodyTextStyle(TextMeshProUGUI tmp)
     {
-        float value = answerSlider != null ? answerSlider.value : 0f;
-        var callback = onQuestionSubmitted;
-        onQuestionSubmitted = null;
-        HideQuestionPanel();
-        callback?.Invoke(value);
+        if (tmp == null)
+            return;
+
+        tmp.enableAutoSizing = true;
+        tmp.fontSizeMin = 18;
+        tmp.fontSizeMax = 36;
+
+        tmp.enableWordWrapping = true;
+        tmp.overflowMode = TextOverflowModes.Overflow;
+
+        // 上下左右居中
+        tmp.alignment = TextAlignmentOptions.Center;
+
+        // 黑色
+        tmp.color = Color.black;
     }
 
-    public void HideAll()
+    private void ApplyButtonTextStyle(TextMeshProUGUI tmp)
     {
-        HideInstruction();
-        HideBoundaryWarning();
-        HideQuestionPanel();
+        if (tmp == null)
+            return;
+
+        tmp.enableAutoSizing = true;
+        tmp.fontSizeMin = 16;
+        tmp.fontSizeMax = 30;
+
+        tmp.enableWordWrapping = false;
+        tmp.overflowMode = TextOverflowModes.Ellipsis;
+
+        // 上下左右居中
+        tmp.alignment = TextAlignmentOptions.Center;
+
+        // 黑色
+        tmp.color = Color.black;
+    }
+
+    private void ApplyValueTextStyle(TextMeshProUGUI tmp)
+    {
+        if (tmp == null)
+            return;
+
+        tmp.enableAutoSizing = true;
+        tmp.fontSizeMin = 16;
+        tmp.fontSizeMax = 28;
+
+        tmp.enableWordWrapping = false;
+        tmp.overflowMode = TextOverflowModes.Overflow;
+
+        // 上下左右居中
+        tmp.alignment = TextAlignmentOptions.Center;
+
+        // 黑色
+        tmp.color = Color.black;
+    }
+
+    private void ForceRefreshLayout(GameObject panel)
+    {
+        if (panel == null)
+            return;
+
+        Canvas.ForceUpdateCanvases();
+
+        RectTransform rt = panel.GetComponent<RectTransform>();
+        if (rt != null)
+        {
+            LayoutRebuilder.ForceRebuildLayoutImmediate(rt);
+        }
+
+        Canvas.ForceUpdateCanvases();
     }
 
     public void ShowInstruction(string message)
     {
         Debug.Log($"[GuidanceUI] ShowInstruction called. message = {message}");
 
+        HideBoundaryWarning();
+        HideQuestionPanel();
+        HideConfirmDialog();
+
         if (instructionText != null)
+        {
+            ApplyBodyTextStyle(instructionText);
             instructionText.text = message;
+        }
 
         if (instructionPanel != null)
         {
             instructionPanel.SetActive(true);
-            //Debug.Log($"[GuidanceUI] InstructionPanel activeSelf={instructionPanel.activeSelf}, activeInHierarchy={instructionPanel.activeInHierarchy}");
+            ForceRefreshLayout(instructionPanel);
         }
     }
 
     public void HideInstruction()
     {
-        //Debug.Log("[GuidanceUI] HideInstruction called.");
-
         if (instructionPanel != null)
             instructionPanel.SetActive(false);
     }
@@ -133,10 +207,16 @@ public class GuidanceUIController : MonoBehaviour
     public void ShowBoundaryWarning(string message)
     {
         if (warningText != null)
+        {
+            ApplyBodyTextStyle(warningText);
             warningText.text = message;
+        }
 
         if (warningPanel != null)
+        {
             warningPanel.SetActive(true);
+            ForceRefreshLayout(warningPanel);
+        }
     }
 
     public void HideBoundaryWarning()
@@ -151,53 +231,54 @@ public class GuidanceUIController : MonoBehaviour
         float maxValue,
         float initialValue,
         string submitLabel,
-        Action<float> submitCallback)
+        Action<float> onSubmit)
     {
+        HideInstruction();
+        HideBoundaryWarning();
+        HideConfirmDialog();
+
+        onQuestionSubmitted = onSubmit;
+
         if (questionPromptText != null)
+        {
+            ApplyBodyTextStyle(questionPromptText);
             questionPromptText.text = prompt;
+        }
 
         if (answerSlider != null)
         {
             answerSlider.minValue = minValue;
             answerSlider.maxValue = maxValue;
             answerSlider.value = Mathf.Clamp(initialValue, minValue, maxValue);
-            OnSliderValueChanged(answerSlider.value);
         }
-
-        if (submitButtonText != null)
-            submitButtonText.text = submitLabel;
 
         if (submitButtonText != null)
         {
+            ApplyButtonTextStyle(submitButtonText);
             submitButtonText.text = submitLabel;
-            submitButtonText.enableAutoSizing = true;
-            submitButtonText.fontSizeMin = 18;
-            submitButtonText.fontSizeMax = 36;
-            submitButtonText.overflowMode = TMPro.TextOverflowModes.Ellipsis;
         }
 
-        onQuestionSubmitted = submitCallback;
+        UpdateAnswerValueLabel();
 
         if (questionPanel != null)
+        {
             questionPanel.SetActive(true);
-        if (submitButtonText != null)
-{
-    submitButtonText.text = submitLabel;
-    submitButtonText.enableAutoSizing = true;
-    submitButtonText.fontSizeMin = 18;
-    submitButtonText.fontSizeMax = 36;
-    submitButtonText.overflowMode = TMPro.TextOverflowModes.Ellipsis;
-}
+            ForceRefreshLayout(questionPanel);
+        }
     }
 
     public void HideQuestionPanel()
     {
         if (questionPanel != null)
             questionPanel.SetActive(false);
+
+        onQuestionSubmitted = null;
     }
 
     public void ShowConfirmDialog(string message, string buttonLabel, Action onConfirm)
     {
+        Debug.Log($"[GuidanceUI] ShowConfirmDialog called. confirmPanel null? {confirmPanel == null}");
+
         HideBoundaryWarning();
         HideQuestionPanel();
         HideInstruction();
@@ -205,20 +286,36 @@ public class GuidanceUIController : MonoBehaviour
         onConfirmDialogSubmitted = onConfirm;
 
         if (confirmMessageText != null)
+        {
+            ApplyBodyTextStyle(confirmMessageText);
+
+            // 长文本重点设置
+            confirmMessageText.enableAutoSizing = true;
+            confirmMessageText.fontSizeMin = 16;
+            confirmMessageText.fontSizeMax = 34;
+            confirmMessageText.enableWordWrapping = true;
+            confirmMessageText.overflowMode = TextOverflowModes.Overflow;
+
+            // 上下左右居中
+            confirmMessageText.alignment = TextAlignmentOptions.Center;
+
+            // 黑色
+            confirmMessageText.color = Color.black;
+
             confirmMessageText.text = message;
+        }
 
         if (confirmButtonText != null)
         {
+            ApplyButtonTextStyle(confirmButtonText);
             confirmButtonText.text = buttonLabel;
-            confirmButtonText.enableAutoSizing = true;
-            confirmButtonText.fontSizeMin = 18;
-            confirmButtonText.fontSizeMax = 36;
-            confirmButtonText.enableWordWrapping = false;
-            confirmButtonText.overflowMode = TMPro.TextOverflowModes.Ellipsis;
         }
 
         if (confirmPanel != null)
+        {
             confirmPanel.SetActive(true);
+            ForceRefreshLayout(confirmPanel);
+        }
     }
 
     public void HideConfirmDialog()
@@ -229,10 +326,33 @@ public class GuidanceUIController : MonoBehaviour
         onConfirmDialogSubmitted = null;
     }
 
+    private void OnSubmitQuestionClicked()
+    {
+        float value = answerSlider != null ? answerSlider.value : 0f;
+
+        Action<float> callback = onQuestionSubmitted;
+        HideQuestionPanel();
+        callback?.Invoke(value);
+    }
+
     private void OnConfirmDialogClicked()
     {
         Action callback = onConfirmDialogSubmitted;
         HideConfirmDialog();
         callback?.Invoke();
+    }
+
+    private void OnAnswerSliderChanged(float _)
+    {
+        UpdateAnswerValueLabel();
+    }
+
+    private void UpdateAnswerValueLabel()
+    {
+        if (answerValueText == null || answerSlider == null)
+            return;
+
+        ApplyValueTextStyle(answerValueText);
+        answerValueText.text = $"{answerSlider.value:0.0} m";
     }
 }

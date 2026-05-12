@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ExperimentFlowManager : MonoBehaviour
@@ -10,6 +11,13 @@ public class ExperimentFlowManager : MonoBehaviour
         WaitingForReturnMarker,
         WaitingForBlockTransitionConfirm,
         Finished
+    }
+
+    [Serializable]
+    private class TrialPair
+    {
+        public TrialDefinition first;
+        public TrialDefinition second;
     }
 
     [Header("Data")]
@@ -30,23 +38,30 @@ public class ExperimentFlowManager : MonoBehaviour
     public bool useShuffleSeed = false;
     public int shuffleSeed = 12345;
 
+    [Header("Pair Constraint")]
+    [Tooltip("保证每个 pair 中，第二个 trial 的 targetDistanceMeters <= 第一个 trial")]
+    public bool enforceSecondDistanceNotGreaterThanFirst = true;
+
+    [Tooltip("构造合法 pair 的最大重试次数")]
+    public int maxPairingAttempts = 500;
+
     [Header("Return Marker")]
     public GameObject returnMarker;
     public float returnMarkerRadius = 0.4f;
     public float returnMarkerHeightOffset = 0.02f;
 
-    [Tooltip("以第一次 trial 起点为基准，沿世界 Z 轴负方向随机偏移的最大距离")]
+    [Tooltip("以第一次 trial 起点为基准，沿第一次 trial 的走廊方向反方向随机偏移的最大距离")]
     public float returnMarkerRandomBackwardOffsetMax = 0.5f;
 
     [Header("Messages")]
     [TextArea(3, 6)]
     public string returnMarkerInstructionJa =
-        "赤いringの位置まで移動して、次の実験に進んでください。\n\n" +
+        "赤いリングの位置まで移動して、次の実験に進んでください。\n\n" +
         "Please move to the red ring to proceed to the next trial.";
-    
+
     [TextArea(3, 6)]
     public string blockBreakMessageJa =
-        "第1 Block が終了しました。現在は休憩時間です。続行する場合は確認を押してください。\n\n" +
+        "第1ブロックが終了しました。現在は休憩時間です。続行する場合は確認を押してください。\n\n" +
         "Block 1 is finished. You are currently in a break state. If you want to continue, please press Confirm.";
 
     public string blockBreakConfirmButtonJa = "確認 / Confirm";
@@ -70,6 +85,9 @@ public class ExperimentFlowManager : MonoBehaviour
 
     // 整个实验第一次 trial 的起点
     private Vector3 globalFirstTrialStartFeetWorldPosition;
+
+    // 整个实验第一次 trial 的走廊方向（水平面）
+    private Vector3 globalFirstTrialForwardWorld;
 
     // 当前这一次红圈对应的“逻辑地面锚点”
     private Vector3 currentReturnMarkerAnchorFeetWorldPosition;
@@ -139,10 +157,25 @@ public class ExperimentFlowManager : MonoBehaviour
             return;
         }
 
+        if ((block0Trials.Count % 2) != 0 || (block1Trials.Count % 2) != 0)
+        {
+            Debug.LogError("[ExperimentFlowManager] Each block must contain an even number of trials.");
+            return;
+        }
+
         if (shuffleTrialsWithinBlock)
         {
-            ShuffleList(block0Trials, GetRngForBlock(0));
-            ShuffleList(block1Trials, GetRngForBlock(1));
+            block0Trials = BuildPairedSequenceWithDistanceConstraint(
+                block0Trials,
+                GetRngForBlock(0),
+                "Block0"
+            );
+
+            block1Trials = BuildPairedSequenceWithDistanceConstraint(
+                block1Trials,
+                GetRngForBlock(1),
+                "Block1"
+            );
         }
 
         pendingStartFeetWorldPosition = GetPlayerFeetOnCurrentCorridorFloor();
@@ -150,6 +183,12 @@ public class ExperimentFlowManager : MonoBehaviour
 
         // 记录整个实验第一次 trial 的起点
         globalFirstTrialStartFeetWorldPosition = pendingStartFeetWorldPosition;
+
+        // 记录整个实验第一次 trial 的走廊方向（水平面）
+        globalFirstTrialForwardWorld = Vector3.ProjectOnPlane(currentForwardWorld, Vector3.up);
+        if (globalFirstTrialForwardWorld.sqrMagnitude < 0.0001f)
+            globalFirstTrialForwardWorld = Vector3.forward;
+        globalFirstTrialForwardWorld.Normalize();
 
         // 第一对 trial 的逻辑起点
         pairAnchorFeetWorldPosition = pendingStartFeetWorldPosition;
@@ -276,7 +315,6 @@ public class ExperimentFlowManager : MonoBehaviour
             return;
         }
 
-        // 保底
         if (blockFinished)
         {
             FinishCurrentBlockOrExperiment();
@@ -311,8 +349,6 @@ public class ExperimentFlowManager : MonoBehaviour
         }
     }
 
-    // 点击休息确认后，不直接开始 block1
-    // 先显示红圈，让用户走到红圈后再开始 block1
     private void OnConfirmStartBlock1()
     {
         currentBlockId = 1;
@@ -362,10 +398,11 @@ public class ExperimentFlowManager : MonoBehaviour
             return;
         }
 
-        float backwardOffset = Random.Range(0f, returnMarkerRandomBackwardOffsetMax);
+        float backwardOffset = UnityEngine.Random.Range(0f, returnMarkerRandomBackwardOffsetMax);
 
-        currentReturnMarkerAnchorFeetWorldPosition = globalFirstTrialStartFeetWorldPosition;
-        currentReturnMarkerAnchorFeetWorldPosition.z -= backwardOffset;
+        // 沿第一次 trial 的走廊方向反方向偏移，而不是沿世界 Z 轴偏移
+        currentReturnMarkerAnchorFeetWorldPosition =
+            globalFirstTrialStartFeetWorldPosition - globalFirstTrialForwardWorld * backwardOffset;
 
         Vector3 markerDisplayPosition = currentReturnMarkerAnchorFeetWorldPosition;
 
@@ -378,6 +415,7 @@ public class ExperimentFlowManager : MonoBehaviour
         Debug.Log(
             $"[ExperimentFlowManager] Show return marker. " +
             $"baseFirstTrialStart={globalFirstTrialStartFeetWorldPosition}, " +
+            $"firstTrialForward={globalFirstTrialForwardWorld}, " +
             $"backwardOffset={backwardOffset:0.000}, " +
             $"anchorFeet={currentReturnMarkerAnchorFeetWorldPosition}, " +
             $"displayPos={markerDisplayPosition}"
@@ -413,6 +451,118 @@ public class ExperimentFlowManager : MonoBehaviour
         }
 
         Debug.Log("[ExperimentFlowManager] Experiment finished.");
+    }
+
+    private List<TrialDefinition> BuildPairedSequenceWithDistanceConstraint(
+        List<TrialDefinition> source,
+        System.Random rng,
+        string blockName)
+    {
+        if (source == null || source.Count == 0)
+            return new List<TrialDefinition>();
+
+        if (source.Count % 2 != 0)
+            throw new InvalidOperationException($"{blockName}: source count must be even.");
+
+        if (!enforceSecondDistanceNotGreaterThanFirst)
+        {
+            List<TrialDefinition> copy = new List<TrialDefinition>(source);
+            ShuffleList(copy, rng);
+            return copy;
+        }
+
+        for (int attempt = 0; attempt < maxPairingAttempts; attempt++)
+        {
+            List<TrialDefinition> pool = new List<TrialDefinition>(source);
+            ShuffleList(pool, rng);
+
+            List<TrialPair> pairs = new List<TrialPair>();
+
+            bool success = true;
+
+            while (pool.Count > 0)
+            {
+                TrialDefinition first = pool[0];
+                pool.RemoveAt(0);
+
+                List<int> validIndices = new List<int>();
+                for (int i = 0; i < pool.Count; i++)
+                {
+                    if (pool[i].targetDistanceMeters <= first.targetDistanceMeters)
+                    {
+                        validIndices.Add(i);
+                    }
+                }
+
+                if (validIndices.Count == 0)
+                {
+                    success = false;
+                    break;
+                }
+
+                int chosenPoolIndex = validIndices[rng.Next(validIndices.Count)];
+                TrialDefinition second = pool[chosenPoolIndex];
+                pool.RemoveAt(chosenPoolIndex);
+
+                pairs.Add(new TrialPair
+                {
+                    first = first,
+                    second = second
+                });
+            }
+
+            if (success)
+            {
+                ShufflePairs(pairs, rng);
+
+                List<TrialDefinition> result = new List<TrialDefinition>(source.Count);
+                foreach (var pair in pairs)
+                {
+                    result.Add(pair.first);
+                    result.Add(pair.second);
+                }
+
+                Debug.Log($"[ExperimentFlowManager] {blockName}: paired sequence built successfully on attempt {attempt + 1}.");
+                LogPairSummary(result, blockName);
+                return result;
+            }
+        }
+
+        Debug.LogError(
+            $"[ExperimentFlowManager] {blockName}: failed to build valid paired sequence after {maxPairingAttempts} attempts. " +
+            $"Returning original order."
+        );
+
+        return new List<TrialDefinition>(source);
+    }
+
+    private void ShufflePairs(List<TrialPair> pairs, System.Random rng)
+    {
+        for (int i = 0; i < pairs.Count; i++)
+        {
+            int j = rng.Next(i, pairs.Count);
+            TrialPair temp = pairs[i];
+            pairs[i] = pairs[j];
+            pairs[j] = temp;
+        }
+    }
+
+    private void LogPairSummary(List<TrialDefinition> orderedTrials, string blockName)
+    {
+        for (int i = 0; i < orderedTrials.Count; i += 2)
+        {
+            if (i + 1 >= orderedTrials.Count)
+                break;
+
+            TrialDefinition first = orderedTrials[i];
+            TrialDefinition second = orderedTrials[i + 1];
+
+            Debug.Log(
+                $"[{blockName} Pair {i / 2}] " +
+                $"first={first.trialId}({first.targetDistanceMeters}), " +
+                $"second={second.trialId}({second.targetDistanceMeters})"
+            );
+        }
     }
 
     private Vector3 GetPlayerFeetOnCurrentCorridorFloor()

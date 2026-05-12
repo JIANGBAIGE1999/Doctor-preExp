@@ -12,7 +12,8 @@ public class AlignPlayerToStartPoint : MonoBehaviour
     [Header("Debug")]
     public bool enableKeyboardTest = true;
 
-    private bool lastLeftPrimaryButtonState = false;
+    // 改成记录“左手摇杆点击”上一帧状态
+    private bool lastLeftStickClickState = false;
 
     void OnEnable()
     {
@@ -30,30 +31,30 @@ public class AlignPlayerToStartPoint : MonoBehaviour
             shouldAlign = true;
         }
 
-        // 左手 primary button
+        // 左手摇杆点击（primary2DAxisClick）
         InputDevice leftHand = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
         if (leftHand.isValid)
         {
-            bool primaryPressed;
-            if (leftHand.TryGetFeatureValue(CommonUsages.primaryButton, out primaryPressed))
+            bool stickClickPressed;
+            if (leftHand.TryGetFeatureValue(CommonUsages.primary2DAxisClick, out stickClickPressed))
             {
                 // 只在按下瞬间触发一次
-                if (primaryPressed && !lastLeftPrimaryButtonState)
+                if (stickClickPressed && !lastLeftStickClickState)
                 {
-                    Debug.Log("[Align] Left primary button pressed.");
+                    Debug.Log("[Align] Left stick click pressed.");
                     shouldAlign = true;
                 }
 
-                lastLeftPrimaryButtonState = primaryPressed;
+                lastLeftStickClickState = stickClickPressed;
             }
             else
             {
-                lastLeftPrimaryButtonState = false;
+                lastLeftStickClickState = false;
             }
         }
         else
         {
-            lastLeftPrimaryButtonState = false;
+            lastLeftStickClickState = false;
         }
 
         if (shouldAlign)

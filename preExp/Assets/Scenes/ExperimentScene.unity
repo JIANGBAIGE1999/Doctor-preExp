@@ -464,16 +464,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetSequence: {fileID: 11400000, guid: e6d9f42bc3fc4a94b82a36d5fa0ba954, type: 2}
-  panelCounts: 01000000
+  panelCounts: 0100000003000000
   flashTriggerDistances:
-  - 1.5
+  - 1.56
+  - 0.9
   flashModes: 0200000000000000
   repeatCount: 1
   targetDistanceOptions:
-  - 2
+  - 5
+  - 7
+  - 9
   panelSideModes: 0100000000000000
-  panelSpawnMinDistance: 3
-  panelSpawnMaxDistance: 6
+  panelSpawnMinDistance: 4.5
+  panelSpawnMaxDistance: 9.5
   minPanelGap: 0.8
   reservedGapFromStop: 0.5
   lateralOffsetMagnitude: 0.9
@@ -1035,7 +1038,7 @@ MonoBehaviour:
   questionMaxMeters: 30
   questionInitialMeters: 15
   finishButtonNode: 5
-  finishButtonType: 0
+  finishButtonType: 3
 --- !u!4 &386952378
 Transform:
   m_ObjectHideFlags: 0
@@ -1063,9 +1066,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b1075a10988a14f99afae1777b6443, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  head: {fileID: 1419670709}
+  headAnchor: {fileID: 0}
   canvasRoot: {fileID: 1935492575}
   uiDistance: 1
+  uiVerticalOffset: -0.4
   instructionPanel: {fileID: 190338870}
   instructionText: {fileID: 1882212435}
   warningPanel: {fileID: 200387738}
@@ -1102,6 +1106,8 @@ MonoBehaviour:
   shuffleTrialsWithinBlock: 1
   useShuffleSeed: 0
   shuffleSeed: 12345
+  enforceSecondDistanceNotGreaterThanFirst: 1
+  maxPairingAttempts: 500
   returnMarker: {fileID: 7187830972151136669}
   returnMarkerRadius: 0.4
   returnMarkerHeightOffset: 0
@@ -1301,7 +1307,7 @@ MonoBehaviour:
   m_text: "\u3042\u306A\u305F\u306F\u3069\u306E\u304F\u3089\u3044\u6B69\u3044\u305F\u3068\u601D\u3044\u307E\u3059\u304B\uFF1F\\n\\nHow
     far do you think you walked?"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 148d31e8fcfe198409fb6c5070de9dbe, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 48365f02e369c174494285e51e70dbfd, type: 2}
   m_sharedMaterial: {fileID: -8631672884977727813, guid: 148d31e8fcfe198409fb6c5070de9dbe, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1529,7 +1535,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Next Trial
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 148d31e8fcfe198409fb6c5070de9dbe, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 48365f02e369c174494285e51e70dbfd, type: 2}
   m_sharedMaterial: {fileID: -8631672884977727813, guid: 148d31e8fcfe198409fb6c5070de9dbe, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1593,7 +1599,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &708691163
@@ -1697,7 +1703,7 @@ MonoBehaviour:
     1 is finished. You are currently in a break state. If you want to continue, please
     press Confirm."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 148d31e8fcfe198409fb6c5070de9dbe, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 48365f02e369c174494285e51e70dbfd, type: 2}
   m_sharedMaterial: {fileID: -8631672884977727813, guid: 148d31e8fcfe198409fb6c5070de9dbe, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2054,7 +2060,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Confirm
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 148d31e8fcfe198409fb6c5070de9dbe, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 48365f02e369c174494285e51e70dbfd, type: 2}
   m_sharedMaterial: {fileID: -8631672884977727813, guid: 148d31e8fcfe198409fb6c5070de9dbe, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2801,7 +2807,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 15.0 m
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 148d31e8fcfe198409fb6c5070de9dbe, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 48365f02e369c174494285e51e70dbfd, type: 2}
   m_sharedMaterial: {fileID: -8631672884977727813, guid: 148d31e8fcfe198409fb6c5070de9dbe, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4086,7 +4092,7 @@ MonoBehaviour:
   m_text: "\u5371\u967A\u3067\u3059\u3002\u5B9F\u9A13\u30A8\u30EA\u30A2\u306B\u623B\u3063\u3066\u304F\u3060\u3055\u3044\u3002\\n\\nDanger.
     Please return to the experiment area."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 148d31e8fcfe198409fb6c5070de9dbe, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 48365f02e369c174494285e51e70dbfd, type: 2}
   m_sharedMaterial: {fileID: -8631672884977727813, guid: 148d31e8fcfe198409fb6c5070de9dbe, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4267,7 +4273,7 @@ MonoBehaviour:
   m_text: "\u3053\u3053\u306B\u8AAC\u660E\u6587\u304C\u8868\u793A\u3055\u308C\u307E\u3059\u3002\\n\\nInstruction
     text will appear here."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 148d31e8fcfe198409fb6c5070de9dbe, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 48365f02e369c174494285e51e70dbfd, type: 2}
   m_sharedMaterial: {fileID: -8631672884977727813, guid: 148d31e8fcfe198409fb6c5070de9dbe, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}

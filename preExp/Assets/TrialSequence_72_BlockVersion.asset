@@ -16,17 +16,17 @@ MonoBehaviour:
   - trialId: T000
     blockId: 0
     trialType: 0
-    targetDistanceMeters: 2
+    targetDistanceMeters: 1.5
     customInstruction:
       japanese: 
       english: 
     flashMode: 2
     panelCount: 1
-    flashTriggerDistance: 1.5
+    flashTriggerDistance: 0.9
     flashDuration: 0.3
-    panelSideMode: 1
-    panelSpawnMinDistance: 3
-    panelSpawnMaxDistance: 6
+    panelSideMode: 0
+    panelSpawnMinDistance: 2
+    panelSpawnMaxDistance: 3
     minPanelGap: 0.8
     reservedGapFromStop: 0.5
     lateralOffsetMagnitude: 0.9
@@ -48,11 +48,11 @@ MonoBehaviour:
       english: 
     flashMode: 0
     panelCount: 1
-    flashTriggerDistance: 1.5
+    flashTriggerDistance: 0.9
     flashDuration: 0.3
-    panelSideMode: 0
-    panelSpawnMinDistance: 3
-    panelSpawnMaxDistance: 6
+    panelSideMode: 1
+    panelSpawnMinDistance: 2
+    panelSpawnMaxDistance: 3
     minPanelGap: 0.8
     reservedGapFromStop: 0.5
     lateralOffsetMagnitude: 0.9
@@ -66,19 +66,19 @@ MonoBehaviour:
     flashPanelForwardDistance: 3
     flashPanelLateralOffset: 0
   - trialId: T002
-    blockId: 1
-    trialType: 1
+    blockId: 0
+    trialType: 0
     targetDistanceMeters: 2
     customInstruction:
       japanese: 
       english: 
     flashMode: 2
-    panelCount: 1
-    flashTriggerDistance: 1.5
+    panelCount: 3
+    flashTriggerDistance: 0.9
     flashDuration: 0.3
     panelSideMode: 0
-    panelSpawnMinDistance: 3
-    panelSpawnMaxDistance: 6
+    panelSpawnMinDistance: 2
+    panelSpawnMaxDistance: 3
     minPanelGap: 0.8
     reservedGapFromStop: 0.5
     lateralOffsetMagnitude: 0.9
@@ -92,19 +92,19 @@ MonoBehaviour:
     flashPanelForwardDistance: 3
     flashPanelLateralOffset: 0
   - trialId: T003
-    blockId: 1
-    trialType: 1
-    targetDistanceMeters: 2
+    blockId: 0
+    trialType: 0
+    targetDistanceMeters: 1.5
     customInstruction:
       japanese: 
       english: 
     flashMode: 0
-    panelCount: 1
-    flashTriggerDistance: 1.5
+    panelCount: 3
+    flashTriggerDistance: 0.9
     flashDuration: 0.3
     panelSideMode: 1
-    panelSpawnMinDistance: 3
-    panelSpawnMaxDistance: 6
+    panelSpawnMinDistance: 2
+    panelSpawnMaxDistance: 3
     minPanelGap: 0.8
     reservedGapFromStop: 0.5
     lateralOffsetMagnitude: 0.9
@@ -113,6 +113,110 @@ MonoBehaviour:
     repeatIndex: 0
     useFixedRandomSeed: 0
     randomSeed: 1003
+    generatedForwardDistances: []
+    generatedLateralOffsets: []
+    flashPanelForwardDistance: 3
+    flashPanelLateralOffset: 0
+  - trialId: T004
+    blockId: 1
+    trialType: 1
+    targetDistanceMeters: 2
+    customInstruction:
+      japanese: 
+      english: 
+    flashMode: 2
+    panelCount: 1
+    flashTriggerDistance: 0.9
+    flashDuration: 0.3
+    panelSideMode: 1
+    panelSpawnMinDistance: 2
+    panelSpawnMaxDistance: 3
+    minPanelGap: 0.8
+    reservedGapFromStop: 0.5
+    lateralOffsetMagnitude: 0.9
+    flashPanelHeight: 1.5
+    panelScaleMultiplier: 1
+    repeatIndex: 0
+    useFixedRandomSeed: 0
+    randomSeed: 1004
+    generatedForwardDistances: []
+    generatedLateralOffsets: []
+    flashPanelForwardDistance: 3
+    flashPanelLateralOffset: 0
+  - trialId: T005
+    blockId: 1
+    trialType: 1
+    targetDistanceMeters: 1.5
+    customInstruction:
+      japanese: 
+      english: 
+    flashMode: 0
+    panelCount: 1
+    flashTriggerDistance: 0.9
+    flashDuration: 0.3
+    panelSideMode: 0
+    panelSpawnMinDistance: 2
+    panelSpawnMaxDistance: 3
+    minPanelGap: 0.8
+    reservedGapFromStop: 0.5
+    lateralOffsetMagnitude: 0.9
+    flashPanelHeight: 1.5
+    panelScaleMultiplier: 1
+    repeatIndex: 0
+    useFixedRandomSeed: 0
+    randomSeed: 1005
+    generatedForwardDistances: []
+    generatedLateralOffsets: []
+    flashPanelForwardDistance: 3
+    flashPanelLateralOffset: 0
+  - trialId: T006
+    blockId: 1
+    trialType: 1
+    targetDistanceMeters: 2
+    customInstruction:
+      japanese: 
+      english: 
+    flashMode: 2
+    panelCount: 3
+    flashTriggerDistance: 0.9
+    flashDuration: 0.3
+    panelSideMode: 1
+    panelSpawnMinDistance: 2
+    panelSpawnMaxDistance: 3
+    minPanelGap: 0.8
+    reservedGapFromStop: 0.5
+    lateralOffsetMagnitude: 0.9
+    flashPanelHeight: 1.5
+    panelScaleMultiplier: 1
+    repeatIndex: 0
+    useFixedRandomSeed: 0
+    randomSeed: 1006
+    generatedForwardDistances: []
+    generatedLateralOffsets: []
+    flashPanelForwardDistance: 3
+    flashPanelLateralOffset: 0
+  - trialId: T007
+    blockId: 1
+    trialType: 1
+    targetDistanceMeters: 1.5
+    customInstruction:
+      japanese: 
+      english: 
+    flashMode: 0
+    panelCount: 3
+    flashTriggerDistance: 0.9
+    flashDuration: 0.3
+    panelSideMode: 0
+    panelSpawnMinDistance: 2
+    panelSpawnMaxDistance: 3
+    minPanelGap: 0.8
+    reservedGapFromStop: 0.5
+    lateralOffsetMagnitude: 0.9
+    flashPanelHeight: 1.5
+    panelScaleMultiplier: 1
+    repeatIndex: 0
+    useFixedRandomSeed: 0
+    randomSeed: 1007
     generatedForwardDistances: []
     generatedLateralOffsets: []
     flashPanelForwardDistance: 3
